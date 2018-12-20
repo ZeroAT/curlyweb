@@ -1,4 +1,4 @@
-package entity;
+package com.app.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ public class Shampoo {
 	@Column(name="shampoo_id")
 	private int id;
 	
-	@Column
+	@Column(name="shampoo_name")
 	private String name;
 	
 	@OneToOne
