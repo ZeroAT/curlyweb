@@ -1,5 +1,2 @@
-<html>
-<body>
-<h2>Hello World! Test</h2>
-</body>
-</html>
+<% response.sendRedirect("shampoo/list"); %>
+

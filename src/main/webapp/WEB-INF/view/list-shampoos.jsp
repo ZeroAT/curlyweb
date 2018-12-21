@@ -18,6 +18,10 @@
 	
 	<div id="container">
 		<div id="content">
+			
+			<input type="button" value="Add Shampoo"
+				onclick="window.location.href='showFormForAdd'; return false;"
+			/>
 			<table>
 				<tr>
 					<th>Name</th>
