@@ -40,6 +40,13 @@
 						<td><label>Company:</label></td>
 						<td><form:input path="company" /></td>
 					</tr>
+					
+					<tr>
+						<td><label>Ingredients:</label></td>
+						<td><form:select multiple="true" path="name">
+							<form:options items="${ingredients}" itemLabel="name" itemValue="id" />
+							</form:select></td>
+					</tr>
 				</tbody>
 			
 			</table>
