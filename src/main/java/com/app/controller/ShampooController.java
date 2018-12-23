@@ -45,18 +45,21 @@ public class ShampooController {
 		//create model attribute to bind form data
 		
 		Shampoo theShampoo = new Shampoo();
-		theModel.addAttribute("shampoo", theShampoo);
+		modelMap.addAttribute("shampoo", theShampoo);
 		
-		List<Company> theCompanies = companyDAO.getCompanies();
-		theModel.addAttribute("companies", theCompanies);
+		Ingredient theIngredient = new Ingredient();
+		modelMap.addAttribute("ingredient", theIngredient);
+		//List<Company> theCompanies = companyDAO.getCompanies();
+		//theModel.addAttribute("companies", theCompanies);
 		
-		List<Ingredient> theIngredients = ingredientDAO.getIngredients();
+		//List<Ingredient> theIngredients = ingredientDAO.getIngredients();
 		//theModel.addAttribute("ingredients", theIngredients);
 		
-	    ModelAndView modelAndView=new ModelAndView();
-	    modelMap.addAttribute("ingredients", theIngredients);
-	    modelAndView.addAllObjects(modelMap);
-	    modelAndView.setViewName("s");
+		
+	    //ModelAndView modelAndView=new ModelAndView();
+	    //modelMap.addAttribute("ingredients", theIngredients);
+	    //modelAndView.addAllObjects(modelMap);
+	    //modelAndView.setViewName("s");
 		
 		return "shampoo-form";
 	}
