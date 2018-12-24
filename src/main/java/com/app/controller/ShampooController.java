@@ -47,13 +47,19 @@ public class ShampooController {
 		Shampoo theShampoo = new Shampoo();
 		modelMap.addAttribute("shampoo", theShampoo);
 		
-		Ingredient theIngredient = new Ingredient();
-		modelMap.addAttribute("ingredient", theIngredient);
+		//Ingredient theIngredient = new Ingredient();
+		
+		//modelMap.addAttribute("ingredient", theIngredient);
+		
+		//List<Ingredient> theIngredients = ingredientDAO.getIngredients();
+		//modelMap.addAttribute("ingredient", theIngredients);
+
+		
 		//List<Company> theCompanies = companyDAO.getCompanies();
 		//theModel.addAttribute("companies", theCompanies);
 		
-		//List<Ingredient> theIngredients = ingredientDAO.getIngredients();
-		//theModel.addAttribute("ingredients", theIngredients);
+		List<Ingredient> theIngredients = ingredientDAO.getIngredients();
+		theModel.addAttribute("ingredients", theIngredients);
 		
 		
 	    //ModelAndView modelAndView=new ModelAndView();
