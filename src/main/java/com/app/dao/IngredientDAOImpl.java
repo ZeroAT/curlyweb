@@ -26,4 +26,15 @@ public class IngredientDAOImpl implements IngredientDAO {
 		return ingredients;
 	}
 
+	@Override
+	@Transactional
+	public Ingredient findByName(String name) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Ingredient theIngredient = currentSession.get(Ingredient.class, Integer.parseInt(name));
+		return theIngredient;
+	}
+	
+	
+
 }

@@ -1,4 +1,5 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
@@ -14,11 +15,8 @@
 <script>
 
 $(document).ready(function(e){
-	
-	$(".test").chosen({
-
-	  });
-	
+	// first initialize the Chosen select
+	$('.test').chosen();
 	
 });
 
@@ -28,7 +26,7 @@ $(document).ready(function(e){
 </head>
 <body>
 	
-		<form:form action="saveShampoo" modelAttribute="shampoo" method="POST">
+		<form:form cssClass="form" action="saveShampoo" modelAttribute="shampoo" method="POST">
 		
 			<table>
 				<tbody>
@@ -41,16 +39,18 @@ $(document).ready(function(e){
 						<td><form:input path="company" /></td>
 					</tr>
 
-
 					<tr>
 						<td><label>Ingredients:</label></td>
-						<td><form:select cssClass="test" multiple="true" path="${ingredient.name}" >
-							<form:options items="${ingredients}" itemLabel="name" itemValue="id" />
+						<td><form:select cssClass="test" multiple="true" path="Ingredients" >
+							<form:options items="${ingredient}" itemValue="id" itemLabel="name" />
+							
 							</form:select></td>
 					</tr>
+					
 				</tbody>
 			
 			</table>
+			<input id= "submit" type="submit" value="Save"/>
 		</form:form>
 
 </body>

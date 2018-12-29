@@ -2,8 +2,10 @@ package com.app.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,21 +26,23 @@ public class Ingredient {
 	@Column(name="ingredient_name")
 	private String name;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name="shampoo_ingredients",
 			joinColumns=@JoinColumn(name="fk_ingredient"),
 			inverseJoinColumns=@JoinColumn(name="fk_shampoo")
 			)
-	private List<Ingredient> ingredients;
+	private List<Shampoo> shampoos;
 	
 	public Ingredient() {
 		
 	}
 
+
 	public Ingredient(String name) {
 		this.name = name;
 	}
+
 
 	public int getId() {
 		return id;
@@ -56,17 +60,20 @@ public class Ingredient {
 		this.name = name;
 	}
 
-	public List<Ingredient> getIngredients() {
-		return ingredients;
+
+	public List<Shampoo> getShampoos() {
+		return shampoos;
 	}
 
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+	public void setShampoos(List<Shampoo> shampoos) {
+		this.shampoos = shampoos;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Ingredient [id=" + id + ", name=" + name + "]";
+		return "Ingredient [id=" + id + ", name=" + name + ", shampoos=" + shampoos + "]";
 	}
-	
+
+
 }

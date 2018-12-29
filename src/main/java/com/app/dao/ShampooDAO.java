@@ -8,5 +8,5 @@ public interface ShampooDAO {
 	
 	public List<Shampoo> getShampoos();
 	
-	
+	public void saveShampoo(Shampoo theShampoo);
 }

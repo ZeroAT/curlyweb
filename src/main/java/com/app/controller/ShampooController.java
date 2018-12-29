@@ -1,13 +1,24 @@
 package com.app.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.dao.CompanyDAO;
@@ -28,6 +39,9 @@ public class ShampooController {
 	private CompanyDAO companyDAO;
 	@Autowired
 	private IngredientDAO ingredientDAO;
+	@Autowired
+	private ConversionService cs;
+	private Ingredient one;
 	
 	@RequestMapping("/list")
 	public String listShampoos(Model theModel) {
@@ -46,27 +60,27 @@ public class ShampooController {
 		
 		Shampoo theShampoo = new Shampoo();
 		modelMap.addAttribute("shampoo", theShampoo);
-		
-		//Ingredient theIngredient = new Ingredient();
-		
-		//modelMap.addAttribute("ingredient", theIngredient);
-		
-		//List<Ingredient> theIngredients = ingredientDAO.getIngredients();
-		//modelMap.addAttribute("ingredient", theIngredients);
 
 		
-		//List<Company> theCompanies = companyDAO.getCompanies();
-		//theModel.addAttribute("companies", theCompanies);
-		
 		List<Ingredient> theIngredients = ingredientDAO.getIngredients();
-		theModel.addAttribute("ingredients", theIngredients);
-		
-		
-	    //ModelAndView modelAndView=new ModelAndView();
-	    //modelMap.addAttribute("ingredients", theIngredients);
-	    //modelAndView.addAllObjects(modelMap);
-	    //modelAndView.setViewName("s");
+
+		modelMap.addAttribute("ingredient", theIngredients);
+
 		
 		return "shampoo-form";
+	}
+	
+	@PostMapping("/saveShampoo")
+	public String saveShampoo(@ModelAttribute("shampoo") Shampoo theShampoo) {
+		
+		System.out.println(theShampoo.getIngredients());
+		System.out.println(theShampoo.toString());
+		
+		
+
+		//ingredientDAO.findByName(theShampoo.getIngredients())
+		shampooDAO.saveShampoo(theShampoo);
+		return "redirect:/shampoo/list";
+		
 	}
 }

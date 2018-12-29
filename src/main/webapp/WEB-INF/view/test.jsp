@@ -9,7 +9,7 @@
 <script type="text/javascript" src="/<web-context-root>/js/jquery-1.4.3.min.js"></script> 
 <script type="text/javascript" src="/<web-context-root>/js/jquery.magicsearch.js"></script> 
 
-<script>
+<script><td>${ingredient.name}</td>
 $(".test").chosen({
     disable_search_threshold: 10,
     no_results_text: "Oops, nothing found!",
@@ -19,7 +19,12 @@ $(".test").chosen({
 </script>
 </head>
 <body>
+$('.test').chosen().change(function(){
+	    var myValues = $('.test').chosen().val();
+		console.log(myValues);
+	    // then do stuff with the array
 
+	});
 			<table>
 				<tr>
 					<th>Company</th>
