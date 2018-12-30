@@ -88,8 +88,12 @@ public class Shampoo {
 
 	@Override
 	public String toString() {
-		return "Shampoo [id=" + id + ", name=" + name + ", company=" + company + ", ingredients=" + ingredients + "]";
+		return "Shampoo [id=" + id + ", name=" + name + ", company=" + company + "]";
 	}
+
+
+
+
 
 
 }

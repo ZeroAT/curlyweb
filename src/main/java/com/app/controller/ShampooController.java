@@ -27,6 +27,8 @@ import com.app.dao.ShampooDAO;
 import com.app.entity.Company;
 import com.app.entity.Ingredient;
 import com.app.entity.Shampoo;
+import com.app.service.IngredientService;
+import com.app.service.ShampooService;
 
 @Controller
 @RequestMapping("/shampoo")
@@ -42,27 +44,32 @@ public class ShampooController {
 	@Autowired
 	private ConversionService cs;
 	private Ingredient one;
+	@Autowired
+	private ShampooService shampooService;
+	@Autowired
+	private IngredientService ingredientService;
+	
 	
 	@RequestMapping("/list")
 	public String listShampoos(Model theModel) {
 		
-		//get shampoo from DAO
-		List<Shampoo> theShampoos = shampooDAO.getShampoos();
+
+		List<Shampoo> theShampoos = shampooService.getShampoos();
 		
-		//add shampoo to model
+
 		theModel.addAttribute("shampoos", theShampoos);
 		return "list-shampoos";
 	}
 	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel, ModelMap modelMap) {
-		//create model attribute to bind form data
+
 		
 		Shampoo theShampoo = new Shampoo();
 		modelMap.addAttribute("shampoo", theShampoo);
 
 		
-		List<Ingredient> theIngredients = ingredientDAO.getIngredients();
+		List<Ingredient> theIngredients = ingredientService.getIngredients();
 
 		modelMap.addAttribute("ingredient", theIngredients);
 
@@ -73,13 +80,8 @@ public class ShampooController {
 	@PostMapping("/saveShampoo")
 	public String saveShampoo(@ModelAttribute("shampoo") Shampoo theShampoo) {
 		
-		System.out.println(theShampoo.getIngredients());
-		System.out.println(theShampoo.toString());
-		
-		
 
-		//ingredientDAO.findByName(theShampoo.getIngredients())
-		shampooDAO.saveShampoo(theShampoo);
+		shampooService.saveShampoo(theShampoo);
 		return "redirect:/shampoo/list";
 		
 	}

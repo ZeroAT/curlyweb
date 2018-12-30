@@ -17,7 +17,7 @@ public class IngredientDAOImpl implements IngredientDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	@Transactional
+
 	public List<Ingredient> getIngredients() {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
@@ -27,7 +27,6 @@ public class IngredientDAOImpl implements IngredientDAO {
 	}
 
 	@Override
-	@Transactional
 	public Ingredient findByName(String name) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		

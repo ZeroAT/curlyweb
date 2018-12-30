@@ -21,7 +21,8 @@ public class ShampooDAOImpl implements ShampooDAO {
 	private SessionFactory sessionFactory;
 	@Autowired
 	private IngredientDAO ingredientDAO;
-	@Transactional
+
+	
 	public List<Shampoo> getShampoos() {
 
 		//get current hibernate session
@@ -33,8 +34,7 @@ public class ShampooDAOImpl implements ShampooDAO {
 		//return list of shampoo
 		return shampoos;
 	}
-	
-	@Transactional
+
 	public void saveShampoo(Shampoo theShampoo) {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
